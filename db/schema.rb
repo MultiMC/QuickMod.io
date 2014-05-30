@@ -13,12 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20140530183034) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "quickmods", force: true do |t|
     t.string   "uid"
     t.string   "name"
     t.text     "description"
-    t.string   "tags"
-    t.string   "categories"
+    t.string   "tags",        array: true
+    t.string   "categories",  array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
