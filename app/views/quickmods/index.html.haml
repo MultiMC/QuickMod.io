@@ -1,0 +1,6 @@
+%h1 QuickMods
+
+%ul
+  - @quickmods.each do |quickmod|
+    %li= link_to quickmod.name, quickmod
+

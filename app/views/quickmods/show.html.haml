@@ -1,0 +1,18 @@
+%h1= @quickmod.name
+
+= link_to "Edit", edit_quickmod_url(@quickmod)
+
+%h2 Info
+%table
+  %tbody
+    %tr
+      %td Name
+      %td= @quickmod.name
+    %tr
+      %td UID
+      %td= @quickmod.uid
+
+
+%h2 Description
+%p= @quickmod.description
+

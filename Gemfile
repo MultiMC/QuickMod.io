@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'haml', '~>4.0.5'
 # Use Best In Place for inline editing.
 gem 'best_in_place', github: 'bernat/best_in_place'
+# Friendly ID for nicer URLs
+gem 'friendly_id', '~>5.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

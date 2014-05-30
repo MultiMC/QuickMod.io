@@ -46,6 +46,8 @@ GEM
     coffee-script-source (1.7.0)
     erubis (2.7.0)
     execjs (2.1.0)
+    friendly_id (5.0.4)
+      activerecord (>= 4.0.0)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -125,6 +127,7 @@ PLATFORMS
 DEPENDENCIES
   best_in_place!
   coffee-rails (~> 4.0.0)
+  friendly_id (~> 5.0.0)
   haml (~> 4.0.5)
   jbuilder (~> 2.0)
   jquery-rails

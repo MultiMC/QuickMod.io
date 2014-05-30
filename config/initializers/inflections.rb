@@ -14,3 +14,11 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+    inflect.acronym "QuickMod"
+    inflect.acronym "QuickMods"
+
+    inflect.acronym "UID"
+    inflect.acronym "UIDs"
+end
