@@ -15,5 +15,5 @@
 //= require turbolinks
 //= require_tree .
 //
-//= require uikit
+//= require semantic-ui
 

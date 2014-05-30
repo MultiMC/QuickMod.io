@@ -1,26 +1,21 @@
-- if @quickmod.errors.any?
-  #error
-    %h2 That's a negative, ghostrider
-    %ul
-      - @quickmod.errors.full_messages.each do |err|
-        %li= err
+= form_for @quickmod, :html => {:class => "ui form"} do |f|
+  - if @quickmod.errors.any?
+    #error.ui.message
+      .header Negative, ghostrider
+      %ul.list
+        - @quickmod.errors.full_messages.each do |err|
+          %li= err
 
-
-= form_for @quickmod do |f|
-  %p
-    = f.label :uid
-    = f.text_field :uid
-  %p
-    = f.label :name
-    = f.text_field :name
-  %p
-    = f.label :tags
+  .field
+    = f.text_field :uid, placeholder: "UID"
+  .field
+    = f.text_field :name, placeholder: "Name"
+  .field
     //= f.text_field :tags
-  %p
-    = f.label :categories
+  .field
     //= f.text_field :categories
-  %p
-    = f.label :description
-    = f.text_area :description
-  %p= f.submit
+  .field
+    = f.text_area :description, placeholder: "Description"
+  .field
+    = f.submit class: "ui blue button"
 

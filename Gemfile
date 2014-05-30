@@ -19,6 +19,11 @@ gem 'best_in_place', github: 'bernat/best_in_place'
 gem 'friendly_id', '~>5.0.0'
 # For Heroku
 gem 'rails_12factor', group: :production
+# Less is more
+gem 'therubyracer'
+gem 'less-rails'
+# Semantic UI
+gem 'semantic-ui-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

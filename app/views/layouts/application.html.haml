@@ -9,5 +9,9 @@
   = csrf_meta_tags
 
 %body
-  #content.uk-container.uk-container-center= yield
+  #navbar.container
+    = render "navbar"
+
+  .main.container
+    = yield
 

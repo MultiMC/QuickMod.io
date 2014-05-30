@@ -13,12 +13,23 @@
  *= require_tree .
  *= require_self
  *
- *= require uikit
- *= require uikit.almost-flat
+ *= require semantic-ui
  */
 
-#content
+// Variables
+@top-margin: 16px;
+@container-width: 80%;
+
+
+.main
 {
-    margin-top: 16px;
+    margin-top: @top-margin;
+}
+
+.container
+{
+    width: @container-width;
+    margin-left: auto;
+    margin-right: auto;
 }
 
