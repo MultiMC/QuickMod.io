@@ -12,4 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *
+ *= require uikit
+ *= require uikit.almost-flat
  */
+
+#content
+{
+    margin-top: 16px;
+}
+
