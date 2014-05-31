@@ -21,10 +21,14 @@ class QuickModsController < ApplicationController
     def update
         @quickmod = QuickMod.friendly.find(params[:id])
 
-        if @quickmod.update quickmod_params
-            redirect_to @quickmod
-        else
-            render "edit"
+        respond_to do |format|
+            if @quickmod.update quickmod_params
+                format.html { redirect_to @quickmod }
+                format.json { respond_with_bip @quickmod }
+            else
+                format.html { render "edit" }
+                format.json { respond_with_bip @quickmod }
+            end
         end
     end
 

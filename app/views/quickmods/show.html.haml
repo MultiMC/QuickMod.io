@@ -2,17 +2,25 @@
 
 = link_to "Edit", edit_quickmod_url(@quickmod)
 
-%h2 Info
-%table.uk-table
-  %tbody
-    %tr
-      %td Name
-      %td= @quickmod.name
-    %tr
-      %td UID
-      %td= @quickmod.uid
+.ui.grid
+  .four.wide.column
+    .ui.segment
+      %h2 Info
+      %table.ui.basic.table
+        %tbody
+          %tr
+            %td UID
+            %td= @quickmod.uid
+          %tr
+            %td Name
+            %td= best_in_place @quickmod, :name, type: :input
+  .twelve.wide.column
+    .ui.segment
+      %h2 Versions
+      %p TODO
+
 
 
 %h2 Description
-%p= @quickmod.description
+%p= best_in_place @quickmod, :description, type: :textarea
 
