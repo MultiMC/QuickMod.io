@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-
+!!!
 %html
-%head
-  %title QuickMod.io
+  %head
+    %title QuickMod.io
 
-  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-  = javascript_include_tag "application", "data-turbolinks-track" => true
-  = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
 
-%body
-  #navbar.container
-    = render "navbar"
+  %body
+    = render 'navbar'
 
-  .main.container
-    = yield
-
+    #content
+      .main.container
+        = yield
+    .ui.dimmer.page.hidden

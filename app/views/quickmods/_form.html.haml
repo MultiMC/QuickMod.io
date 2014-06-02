@@ -1,21 +1,21 @@
-= form_for @quickmod, :html => {:class => "ui form"} do |f|
+= form_for @quickmod, remote: true, :html => {:class => 'ui form'} do |f|
   - if @quickmod.errors.any?
-    #error.ui.message
+    #error.ui.message.red
       .header Negative, ghostrider
       %ul.list
         - @quickmod.errors.full_messages.each do |err|
           %li= err
 
   .field
-    = f.text_field :uid, placeholder: "UID"
+    = f.text_field :uid, placeholder: 'UID'
   .field
-    = f.text_field :name, placeholder: "Name"
+    = f.text_field :name, placeholder: 'Name'
   .field
-    //= f.text_field :tags
+  //= f.text_field :tags
   .field
-    //= f.text_field :categories
+  //= f.text_field :categories
   .field
-    = f.text_area :description, placeholder: "Description"
+    = f.text_area :description, placeholder: 'Description'
   .field
-    = f.submit class: "ui blue button"
+    = f.submit class: 'ui green button ok'
 

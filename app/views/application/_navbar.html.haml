@@ -1,5 +1,14 @@
-%nav.ui.menu
-  = nav_entry "Home", "/"
-  = nav_entry "QuickMods", controller: :quickmods, action: :index
-  = nav_entry "Add QuickMod", controller: :quickmods, action: :new
-
+%nav.ui.orange.menu.fixed.transparent
+  = nav_entry root_path do
+    %i.icon.home
+    QuickMod.io
+  = nav_entry quickmods_path do
+    %i.icon.grid.layout
+    Browse QuickMods
+  = nav_entry new_quickmod_path, data: {newqm: true}, class: 'item' do
+    %i.icon.add.sign
+    Submit QuickMod
+  .right.item
+    .ui.icon.input
+      %input{type: 'search', placeholder: 'Search QuickMods'}
+      %i.icon.search
