@@ -17,13 +17,38 @@
  */
 
 // Variables
-@top-margin: 16px;
+@top-margin: 3em;
 @container-width: 80%;
 
+html {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+body {
+	font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	margin: 0px !important;
+	padding: 0px !important;
+	color: #555555;
+}
+
+#content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
 
 .main
 {
-    margin-top: @top-margin;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin-top: @top-margin;
 }
 
 .container
@@ -33,3 +58,10 @@
     margin-right: auto;
 }
 
+.transparent {
+	opacity: 0.95;
+}
+
+.modal form .content {
+	padding: 0 20px;
+}

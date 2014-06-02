@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-    get "pages/home"
-    root "pages#home"
+
+    get 'pages/home'
+    root 'pages#home'
 
     resources :quickmods
+    post 'ajax/validate_quickmod' => 'quickmods#ajax_validate'
+    patch 'ajax/validate_quickmod' => 'quickmods#ajax_validate'
+    get 'ajax/quickmods/new' => 'quickmods#ajax_new'
+    get 'ajax/quickmods/edit/:id' => 'quickmods#ajax_edit'
+    get 'ajax/quickmods/show/:id' => 'quickmods#ajax_show'
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
