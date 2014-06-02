@@ -12,8 +12,11 @@
           - @quickmod.errors.full_messages.each do |err|
             %li= err
     = f.hidden_field :original_uid, value: @quickmod.uid
-    = f.two_fields do
-      = f.text_field :uid, rails: {placeholder: 'UID'}, semantic: {required: true}
+    - if @type == :new
+      = f.two_fields do
+        = f.text_field :uid, rails: {placeholder: 'UID'}, semantic: {required: true}
+        = f.text_field :name, rails: {placeholder: 'Name'}, semantic: {required: true}
+    - else
       = f.text_field :name, rails: {placeholder: 'Name'}, semantic: {required: true}
     = f.text_area :description, rails: {placeholder: 'Description'}
   .actions

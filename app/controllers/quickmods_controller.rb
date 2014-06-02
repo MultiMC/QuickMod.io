@@ -28,7 +28,7 @@ class QuickModsController < ApplicationController
     end
 
     def update
-        @quickmod.update quickmod_params
+        @quickmod.update quickmod_params(true)
         respond_to do |format|
             format.json do
                 render json: {status: @quickmod.valid?, uid: @quickmod.uid}
@@ -54,9 +54,9 @@ class QuickModsController < ApplicationController
     def ajax_validate
         if request.patch?
             @quickmod = QuickMod.friendly.find(params[:quickmod][:original_uid])
-            @quickmod.attributes = quickmod_params
+            @quickmod.attributes = quickmod_params quickmod_params(true)
         else
-            @quickmod = QuickMod.new quickmod_params
+            @quickmod = QuickMod.new
         end
         respond_to do |format|
             format.json do
@@ -86,7 +86,7 @@ class QuickModsController < ApplicationController
         @quickmod = QuickMod.friendly.find(params[:id])
     end
 
-    def quickmod_params
+    def quickmod_params(edit = false)
         params.require(:quickmod).permit(:uid, :name, :description, :tags, :categories)
     end
 
