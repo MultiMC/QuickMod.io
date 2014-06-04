@@ -22,14 +22,15 @@ class Form
                 type: 'POST',
                 url: @validateUrl
                 data: new_data,
-                async: false
-            })
-            json = response.responseJSON
-            if json
-                @data = new_data
-                @status = json.status
-                @errors = json.errors
-                this.render()
+                async: true
+            }).done( =>
+                json = response.responseJSON
+                if json
+                    @data = new_data
+                    @status = json.status
+                    @errors = json.errors
+                    this.render()
+            )
     findFields: ->
         @form.find("[data-form-field]")
     renderError: (field, error) ->
