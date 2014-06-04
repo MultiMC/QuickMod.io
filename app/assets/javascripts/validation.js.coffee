@@ -1,12 +1,12 @@
 class Form
-    constructor: (selector) ->
+    constructor: (form) ->
         # A map of fields that have been focused once before.
         # If something's not in this list, it will be ignored when validating.
-        @form = $(selector)
+        @form = $(form)
+        @validateUrl = $(form).data('validate-url')
         thisf = this
         @form.find('input, textarea').blur(->
             unless $(this).data('validationActive')
-                console.log("Now validating")
                 $(this).data('validationActive', true)
                 thisf.forceValidate = true
             thisf.validate()
@@ -17,11 +17,10 @@ class Form
     validate: ->
         new_data = @form.serialize()
         if @data != new_data or @forceValidate
-            console.log("validate")
             @forceValidate = false
             response = $.ajax({
                 type: 'POST',
-                url: document.URL + '/ajax_validate',
+                url: @validateUrl
                 data: new_data,
                 async: false
             })
@@ -46,7 +45,6 @@ class Form
         errorContainer.addClass('hidden')
         errorContainer.empty()
     render: ->
-        console.log(this.activeFields)
         for field in this.findFields() when $(field).find('input, textarea').data('validationActive') is true
             name = $(field).data('form-field')
             if @errors[name] == undefined
@@ -55,5 +53,6 @@ class Form
                 this.renderError(field, @errors[name][0])
 
 $(document).ready ->
-    new Form("form.validated-form").validate()
+    for form in $('[data-validate-url]')
+        new Form(form)
 
