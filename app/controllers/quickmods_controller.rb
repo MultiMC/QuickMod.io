@@ -65,21 +65,6 @@ class QuickModsController < ApplicationController
         end
     end
 
-    def ajax_new
-        @type = :new
-        @quickmod = QuickMod.new
-        render 'quickmods/modals/form', layout: false
-    end
-
-    def ajax_edit
-        @type = :edit
-        render 'quickmods/modals/form', layout: false
-    end
-
-    def ajax_show
-        render 'quickmods/modals/show', layout: false
-    end
-
     private
     def set_quickmod
         @quickmod = QuickMod.friendly.find(params[:id])

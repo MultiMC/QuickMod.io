@@ -2,12 +2,11 @@
 
 #quickmod_index.ui.items
   - @quickmods.each do |quickmod|
-    .item{data: {qmuid: quickmod.uid}}
+    %a.item{:href => url_for(quickmod)}
       .image
         = placeholder(350, 150)
       .content
         .name= quickmod.name
         .description= quickmod.description
-      .extra= time_ago_in_words(quickmod.updated_at).gsub(/^about /, '') + ' ago'
-      .ui.dimmer
-        .ui.loader Loading
+      .extra= 'last updated ' + time_ago_in_words(quickmod.updated_at).gsub(/^about /, '') + ' ago'
+

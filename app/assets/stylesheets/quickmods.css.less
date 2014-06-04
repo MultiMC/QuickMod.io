@@ -2,12 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#quickmod_index.ui.items > .item {
+#quickmod_index.ui.items > .item
+{
 	min-height: 220px;
 	max-height: 220px;
-	.description {
+	.description
+    {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
+    // NOTE: There's probably a better way to do this.
+    // This way will break any elements in an item that have decorations.
+    text-decoration: none;
 }
+

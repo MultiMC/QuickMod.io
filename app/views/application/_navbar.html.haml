@@ -5,10 +5,11 @@
   = nav_entry quickmods_path do
     %i.icon.grid.layout
     Browse QuickMods
-  = nav_entry new_quickmod_path, data: {newqm: true}, class: 'item' do
+  = nav_entry new_quickmod_path do
     %i.icon.add.sign
     Submit QuickMod
   .right.item
     .ui.icon.input
       %input{type: 'search', placeholder: 'Search QuickMods'}
       %i.icon.search
+

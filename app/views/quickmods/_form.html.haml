@@ -1,4 +1,4 @@
-= form_for @quickmod, remote: true, :html => {:class => 'ui form'} do |f|
+= form_for @quickmod, :html => {:class => 'ui form validated-form'}, builder: SemanticFormBuilder do |f|
   - if @quickmod.errors.any?
     #error.ui.message.red
       .header Negative, ghostrider
@@ -7,15 +7,15 @@
           %li= err
 
   .field
-    = f.text_field :uid, placeholder: 'UID'
+    = f.text_field :uid, rails: {placeholder: 'UID'}, semantic: {required: true}
   .field
-    = f.text_field :name, placeholder: 'Name'
+    = f.text_field :name, rails: {placeholder: 'Name'}, semantic: {required: true}
   .field
   //= f.text_field :tags
   .field
   //= f.text_field :categories
   .field
-    = f.text_area :description, placeholder: 'Description'
-  .field
+    = f.text_area :description, rails: {placeholder: 'Description'}
+  .actions
     = f.submit class: 'ui green button ok'
 
