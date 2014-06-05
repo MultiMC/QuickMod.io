@@ -17,7 +17,15 @@
   .twelve.wide.column
     .ui.segment
       %h2 Versions
-      %p TODO
+      %table.ui.basic.table
+        %thead
+          %tr
+            %th Name
+        %tbody
+          - @quickmod.versions.each do |version|
+            %tr
+              %td
+                %a{href: url_for([@quickmod, version])}= version.name
 
 
 

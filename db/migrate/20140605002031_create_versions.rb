@@ -6,8 +6,8 @@ class CreateVersions < ActiveRecord::Migration
       t.string :version_type
       t.string :mc_compat, array: true
       t.string :forge_compat
-      t.integer :download_type, default: 0
-      t.integer :install_type, default: 0
+      t.integer :download_type
+      t.integer :install_type
       t.string :md5
       t.string :url
 
