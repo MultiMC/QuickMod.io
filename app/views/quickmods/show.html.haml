@@ -3,8 +3,8 @@
 = link_to "Edit", edit_quickmod_url(@quickmod)
 
 .ui.grid
-  .four.wide.column
-    .ui.segment
+  .equal.height.row
+    .four.wide.column
       %h2 Info
       %table.ui.basic.table
         %tbody
@@ -14,21 +14,28 @@
           %tr
             %td Name
             %td= best_in_place @quickmod, :name, type: :input
-  .twelve.wide.column
-    .ui.segment
-      %h2 Versions
-      %table.ui.basic.table
-        %thead
-          %tr
-            %th Name
-        %tbody
-          - @quickmod.versions.each do |version|
-            %tr
-              %td
-                %a{href: url_for([@quickmod, version])}= version.name
+    .twelve.wide.column
+      %h2 Description
+      %p= best_in_place @quickmod, :description, type: :textarea
 
-
-
-%h2 Description
-%p= best_in_place @quickmod, :description, type: :textarea
+%h2 Versions
+%table.ui.basic.table
+  %thead
+    %tr
+      %th.fourteen.wide Name
+      %th.button-col.three.wide
+        %a.ui.mini.green.icon.button{href: new_quickmod_version_path(@quickmod)}
+          %i.plus.icon.link.icon
+  %tbody
+    - @quickmod.versions.each do |version|
+      %tr
+        %td
+          %a{href: url_for([@quickmod, version])}= version.name
+        %td.button-col
+          .ui.icon.buttons
+            %a.mini.blue.ui.button{href: edit_quickmod_version_url(@quickmod, version)}
+              %i.edit.icon
+            %a.mini.red.ui.button{href: url_for([@quickmod, version]),
+              data: { method: :delete, confirm: "Are you sure you want to delete version #{version.name}?" } }
+              %i.delete.icon
 

@@ -1,6 +1,6 @@
 class VersionsController < ApplicationController
     before_action :set_quickmod
-    before_action :set_version, only: [:edit, :update, :show]
+    before_action :set_version, only: [:edit, :update, :show, :destroy]
 
     def new
         @version = @quickmod.versions.new
@@ -45,6 +45,12 @@ class VersionsController < ApplicationController
 
 
     def show
+    end
+
+
+    def destroy
+        @version.destroy
+        redirect_to @quickmod
     end
 
 
