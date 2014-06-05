@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quickmod_id: 
+  name: MyString
+  type: 
+  mcCompat: 
+  forgeCompat: MyString
+  dlType: MyString
+  installType: MyString
+  md5: MyString
+  url: MyString
+
+two:
+  quickmod_id: 
+  name: MyString
+  type: 
+  mcCompat: 
+  forgeCompat: MyString
+  dlType: MyString
+  installType: MyString
+  md5: MyString
+  url: MyString

@@ -1,0 +1,25 @@
+%h1 #{@quickmod.name} - Version #{@version.name}
+
+%table.ui.basic.table
+  %tbody
+    %tr
+      %td.two.wide Name
+      %td.sixteen.wide= best_in_place [@quickmod, @version], :name, type: :input
+    %tr
+      %td Release Type
+      %td= best_in_place [@quickmod, @version], :version_type, type: :input
+    %tr
+      %td Download URL
+      %td= best_in_place [@quickmod, @version], :url, type: :input
+    %tr
+      %td MD5
+      %td= best_in_place [@quickmod, @version], :md5, type: :input
+    %tr
+      %td Download Type
+      %td= best_in_place [@quickmod, @version], :download_type, type: :select,
+        collection: (bip_select_list download_type_select_list)
+    %tr
+      %td Install Type
+      %td= best_in_place [@quickmod, @version], :install_type, type: :select,
+        collection: (bip_select_list install_type_select_list)
+

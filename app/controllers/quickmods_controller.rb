@@ -1,6 +1,5 @@
 class QuickModsController < ApplicationController
-
-    before_action :set_quickmod, only: [:edit, :update, :show, :ajax_edit, :ajax_show]
+    before_action :set_quickmod, only: [:edit, :update, :show]
 
     def new
         @quickmod = QuickMod.new

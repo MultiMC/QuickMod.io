@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604214514) do
+ActiveRecord::Schema.define(version: 20140605002031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,5 +28,21 @@ ActiveRecord::Schema.define(version: 20140604214514) do
   end
 
   add_index "quickmods", ["slug"], name: "index_quickmods_on_slug", unique: true, using: :btree
+
+  create_table "versions", force: true do |t|
+    t.integer  "quickmod_id"
+    t.string   "name"
+    t.string   "version_type"
+    t.string   "mc_compat",                 array: true
+    t.string   "forge_compat"
+    t.integer  "download_type", default: 0
+    t.integer  "install_type",  default: 0
+    t.string   "md5"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "versions", ["quickmod_id"], name: "index_versions_on_quickmod_id", using: :btree
 
 end

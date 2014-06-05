@@ -3,7 +3,11 @@ Rails.application.routes.draw do
     get 'pages/home'
     root 'pages#home'
 
-    resources :quickmods
+    resources :quickmods do
+        resources :versions
+        post 'versions/ajax_validate' => 'versions#ajax_validate'
+    end
+
     post 'quickmods/ajax_validate' => 'quickmods#ajax_validate'
 
     # The priority is based upon order of creation: first created -> highest priority.

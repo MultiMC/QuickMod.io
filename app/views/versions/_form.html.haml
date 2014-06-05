@@ -1,0 +1,25 @@
+= form_for [@quickmod, @version], :html => {:class => 'ui form', :data => {:validate_url => url_for(controller: :versions, action: :ajax_validate)}}, builder: SemanticFormBuilder do |f|
+  - if @version.errors.any?
+    #error.ui.message.red
+      .header Negative, ghostrider
+      %ul.list
+        - @version.errors.full_messages.each do |err|
+          %li= err
+
+  .field
+    = f.text_field :name, rails: {placeholder: 'Version (e.g. 1.3.3.7)'}, semantic: {required: true}
+  .field
+    = f.text_field :version_type, rails: {placeholder: 'Type (e.g. alpha, beta, release, etc.)'}, semantic: {required: true}
+  .field
+    // TODO: Make these select fields use Semantic UI
+    = f.select :download_type, download_type_select_list
+  .field
+    = f.select :install_type, install_type_select_list
+  .field
+    = f.text_field :url, rails: {placeholder: 'Download URL'}, semantic: {required: true}
+  .field
+    = f.text_field :md5, rails: {placeholder: 'MD5 Hash'}
+  .actions
+    = f.submit class: 'ui green button ok'
+
+

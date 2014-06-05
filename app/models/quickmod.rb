@@ -1,4 +1,6 @@
 class QuickMod < ActiveRecord::Base
+    has_many :versions
+
     extend FriendlyId
     friendly_id :slug_candidates, :use => :slugged
 
