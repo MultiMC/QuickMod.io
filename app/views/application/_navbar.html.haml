@@ -8,8 +8,22 @@
   = nav_entry new_quickmod_path do
     %i.icon.add.sign
     Submit QuickMod
-  .right.item
-    .ui.icon.input
-      %input{type: 'search', placeholder: 'Search QuickMods'}
-      %i.icon.search
+
+  .right.menu
+    - if user_signed_in?
+      .ui.dropdown.item
+        My Account<i class="dropdown icon"></i>
+        .menu
+          = nav_entry destroy_user_session_path, method: :delete do
+            %i.icon.sign.out
+            Sign Out
+    - else
+      = nav_entry new_user_session_path do
+        %i.icon.sign.in
+        Sign In
+
+    .item
+      .ui.icon.input
+        %input{type: 'search', placeholder: 'Search QuickMods'}
+        %i.icon.search
 

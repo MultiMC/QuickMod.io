@@ -17,3 +17,5 @@
 //
 //= require semantic-ui
 
+$(document).on('page:load ready', function() { $(".ui.dropdown").dropdown()});
+

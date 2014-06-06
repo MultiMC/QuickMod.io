@@ -12,6 +12,14 @@ class SemanticFormBuilder < ActionView::Helpers::FormBuilder
         field_wrapper(id, super(id, rails), semantic)
     end
 
+    def email_field(id, rails: {}, semantic: {})
+        field_wrapper(id, super(id, rails), semantic)
+    end
+
+    def password_field(id, rails: {}, semantic: {})
+        field_wrapper(id, super(id, rails), semantic)
+    end
+
     def text_area(id, rails: {}, semantic: {})
         field_wrapper(id, super(id, rails), semantic)
     end

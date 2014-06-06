@@ -12,5 +12,14 @@
 
     #content
       .main.container
+        - flash.each do |name, msg|
+          - if name == :alert
+            #alert.ui.message.red
+              .header Alert
+              = msg
+          - else
+            #notice.ui.message.blue
+              = msg
+
         = yield
     .ui.dimmer.page.hidden

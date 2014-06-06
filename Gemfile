@@ -25,6 +25,8 @@ gem 'less-rails'
 # Semantic UI
 #gem 'semantic-ui-rails'
 gem 'semantic-ui-sass', '~> 0.16.1.0'
+# Devise for login
+gem 'devise'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
