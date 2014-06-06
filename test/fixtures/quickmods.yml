@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  uid: MyString
-  name: MyString
-  description: MyText
-  tags: MyString
-  categories: MyString
+    uid: test.quickmod
+    name: Test Mod
+    description: This is a test fixture QuickMod.
+    tags:
+        - a
+        - b
+        - c
+        - d
+    categories:
+        - tests
+        - lol
+    slug:
+        test.quickmod
 
-two:
-  uid: MyString
-  name: MyString
-  description: MyText
-  tags: MyString
-  categories: MyString

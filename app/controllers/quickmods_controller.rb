@@ -1,5 +1,5 @@
 class QuickModsController < ApplicationController
-    before_action :set_quickmod, only: [:edit, :update, :show]
+    before_action :set_quickmod, only: [:edit, :update, :show, :destroy]
 
     def new
         @quickmod = QuickMod.new
@@ -49,6 +49,13 @@ class QuickModsController < ApplicationController
     def index
         @quickmods = QuickMod.all
     end
+
+
+    def destroy
+        @quickmod.destroy
+        redirect_to quickmods_path
+    end
+
 
     def ajax_validate
         if request.patch?
