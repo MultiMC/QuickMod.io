@@ -3,10 +3,8 @@ require 'test_helper'
 class QuickModsControllerTest < ActionController::TestCase
     fixtures :quickmods
 
-    setup :init_quickmod
-
-    def teardown
-        @quickmod = nil
+    setup do
+		@quickmod = quickmods(:basic_test_one)
     end
 
     test "should show QuickMod" do
@@ -29,11 +27,5 @@ class QuickModsControllerTest < ActionController::TestCase
             delete :destroy, id: @quickmod.slug
         end
         assert_redirected_to quickmods_path
-    end
-
-    private
-
-    def init_quickmod
-        @quickmod = quickmods(:one)
     end
 end
