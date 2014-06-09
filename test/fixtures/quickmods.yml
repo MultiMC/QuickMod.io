@@ -3,6 +3,7 @@
 basic_test_one:
     uid: test.quickmod
     name: Test Mod
+    owner: user_one
     description: This is a test fixture QuickMod.
     tags:
         - a

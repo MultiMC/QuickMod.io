@@ -1,4 +1,5 @@
 class QuickMod < ActiveRecord::Base
+	belongs_to :owner, class_name: 'User'
     has_many :versions
 
     extend FriendlyId
@@ -35,4 +36,9 @@ class QuickMod < ActiveRecord::Base
             errors.add(:uid, 'is reserved')
         end
     end
+
+	# True if the given user owns this QuickMod
+	def owned_by?(usr)
+		not usr.nil? and usr.id == owner_id
+	end
 end
