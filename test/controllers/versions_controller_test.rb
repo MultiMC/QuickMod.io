@@ -4,7 +4,7 @@ class VersionsControllerTest < ActionController::TestCase
     fixtures :versions
 
     setup do
-		@version = versions(:basic_test_one)
+		@version = versions(:test_mod_v1)
 		@quickmod = @version.quickmod
 	end
 

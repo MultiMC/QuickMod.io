@@ -10,7 +10,7 @@ class QuickModTest < ActiveSupport::TestCase
     end
 
     test "owner should be determined properly" do
-        qm = quickmods(:basic_test_one)
+        qm = quickmods(:test_mod)
 
         assert     qm.owned_by?(users(:user_one))
         assert_not qm.owned_by?(users(:mike_hawk))

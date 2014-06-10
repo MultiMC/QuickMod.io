@@ -1,8 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-basic_test_one:
-    quickmod: basic_test_one
+
+# Basic Test Mod
+
+test_mod_v1:
+    quickmod: test_mod
     name: 1.3.3.7
+    version_type: Test
+    mc_compat:
+    forge_compat:
+    download_type: 0
+    install_type: 0
+    md5:
+    url: "http://multimc.org"
+
+test_mod_v2:
+    quickmod: test_mod
+    name: 1.3.3.8
     version_type: Test
     mc_compat:
     forge_compat:

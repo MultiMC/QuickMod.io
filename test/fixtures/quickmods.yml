@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-basic_test_one:
+test_mod:
     uid: test.quickmod
     name: Test Mod
     owner: user_one

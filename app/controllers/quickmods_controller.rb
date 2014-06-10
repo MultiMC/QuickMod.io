@@ -1,6 +1,7 @@
 class QuickModsController < ApplicationController
     before_action :set_quickmod, only: [:edit, :update, :show, :destroy]
 	before_filter :require_owned, only: [:edit, :update, :destroy]
+	before_filter :authenticate_user!, only: [:new, :create]
 
     def new
         @quickmod = QuickMod.new

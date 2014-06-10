@@ -5,12 +5,34 @@ class QuickModsControllerTest < ActionController::TestCase
     fixtures :users
 
     setup do
-		@quickmod = quickmods(:basic_test_one)
+		@quickmod = quickmods(:test_mod)
     end
+
+    test "should not create QuickMod while signed out" do
+        assert_difference 'QuickMod.count', 0 do
+            post :create, quickmod: {
+                uid: 'qmod.create.test',
+                name: 'Test Create QuickMod',
+            }
+            assert_redirected_to new_user_session_path
+        end
+    end
+
+    test "should create QuickMod while signed in" do
+		sign_in @quickmod.owner
+
+        assert_difference 'QuickMod.count', 1 do
+            post :create, quickmod: {
+                uid: 'qmod.create.test',
+                name: 'Test Create QuickMod',
+            }
+            assert_redirected_to quickmod_path('qmod-create-test')
+        end
+    end
+
 
     test "should show QuickMod while signed in" do
 		sign_in @quickmod.owner
-        get :show, id: @quickmod.slug
 
         get :show, id: @quickmod.slug
         assert_response :success
@@ -24,8 +46,6 @@ class QuickModsControllerTest < ActionController::TestCase
 
     test "should update QuickMod name" do
 		sign_in @quickmod.owner
-
-		get :edit, id: @quickmod.slug
 
         new_name = "Name Updated"
         patch :update, id: @quickmod.slug, quickmod: { name: new_name }
@@ -45,6 +65,7 @@ class QuickModsControllerTest < ActionController::TestCase
 		assert_response :forbidden
 	end
 
+
     test "should delete QuickMod" do
 		sign_in @quickmod.owner
 
@@ -53,4 +74,11 @@ class QuickModsControllerTest < ActionController::TestCase
         end
         assert_redirected_to quickmods_path
     end
+
+	test "should not delete unowned QuickMod" do
+        assert_difference 'QuickMod.count', 0 do
+            delete :destroy, id: @quickmod.slug
+            assert_response :forbidden
+        end
+	end
 end
