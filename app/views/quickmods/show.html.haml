@@ -1,6 +1,7 @@
 %h1 QuickMod for #{@quickmod.name}
 
-= link_to "Edit", edit_quickmod_url(@quickmod)
+- if @quickmod.owned_by?(current_user)
+  = link_to "Edit", edit_quickmod_url(@quickmod)
 
 .ui.grid
   .equal.height.row
