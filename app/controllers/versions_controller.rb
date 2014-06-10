@@ -1,6 +1,7 @@
 class VersionsController < ApplicationController
     before_action :set_quickmod
     before_action :set_version, only: [:edit, :update, :show, :destroy]
+    before_filter :require_owned, only: [:new, :create, :edit, :update, :destroy]
 
     def new
         @version = @quickmod.versions.new
@@ -70,6 +71,12 @@ class VersionsController < ApplicationController
     end
 
     private
+	def require_owned
+		if not @quickmod.owned_by?(current_user)
+			render 'denied', status: :forbidden
+		end
+	end
+
     def set_quickmod
         @quickmod = QuickMod.friendly.find(params[:quickmod_id])
     end

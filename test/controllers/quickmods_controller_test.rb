@@ -14,8 +14,8 @@ class QuickModsControllerTest < ActionController::TestCase
                 uid: 'qmod.create.test',
                 name: 'Test Create QuickMod',
             }
-            assert_redirected_to new_user_session_path
         end
+        assert_redirected_to new_user_session_path
     end
 
     test "should create QuickMod while signed in" do
@@ -26,8 +26,8 @@ class QuickModsControllerTest < ActionController::TestCase
                 uid: 'qmod.create.test',
                 name: 'Test Create QuickMod',
             }
-            assert_redirected_to quickmod_path('qmod-create-test')
         end
+        assert_redirected_to quickmod_path('qmod-create-test')
     end
 
 
