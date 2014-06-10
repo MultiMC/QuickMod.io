@@ -8,28 +8,31 @@ class QuickModsControllerTest < ActionController::TestCase
 		@quickmod = quickmods(:test_mod)
     end
 
-    test "should not create QuickMod while signed out" do
-        assert_difference 'QuickMod.count', 0 do
+    # {{{ Create
+
+    def create_quickmod_test(succeed)
+        assert_difference 'QuickMod.count', succeed ? 1 : 0 do
             post :create, quickmod: {
                 uid: 'qmod.create.test',
                 name: 'Test Create QuickMod',
             }
         end
+    end
+
+    test "should not create QuickMod while signed out" do
+        create_quickmod_test(false)
         assert_redirected_to new_user_session_path
     end
 
     test "should create QuickMod while signed in" do
 		sign_in @quickmod.owner
-
-        assert_difference 'QuickMod.count', 1 do
-            post :create, quickmod: {
-                uid: 'qmod.create.test',
-                name: 'Test Create QuickMod',
-            }
-        end
+        create_quickmod_test(true)
         assert_redirected_to quickmod_path('qmod-create-test')
     end
 
+    # }}}
+
+    # {{{ Show
 
     test "should show QuickMod while signed in" do
 		sign_in @quickmod.owner
@@ -43,6 +46,9 @@ class QuickModsControllerTest < ActionController::TestCase
         assert_response :success
     end
 
+    # }}}
+
+    # {{{ Update
 
     test "should update QuickMod name" do
 		sign_in @quickmod.owner
@@ -65,6 +71,9 @@ class QuickModsControllerTest < ActionController::TestCase
 		assert_response :forbidden
 	end
 
+    # }}}
+
+    # {{{ Delete
 
     test "should delete QuickMod" do
 		sign_in @quickmod.owner
@@ -81,4 +90,6 @@ class QuickModsControllerTest < ActionController::TestCase
             assert_response :forbidden
         end
 	end
+
+    # }}}
 end

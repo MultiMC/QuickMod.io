@@ -9,6 +9,8 @@ class VersionsControllerTest < ActionController::TestCase
 	end
 
 
+    # {{{ Create
+
     test "should create version" do
 		sign_in @quickmod.owner
 
@@ -31,19 +33,18 @@ class VersionsControllerTest < ActionController::TestCase
         assert_response :forbidden
     end
 
+    # }}}
+
+    # {{{ Show
 
     test "should show version" do
         get :show, quickmod_id: @quickmod.id, id: @version.id
         assert_response :success
     end
 
+    # }}}
 
-    test "should not update unowned version download type" do
-        new_dl_type = :direct_dl
-        patch :update, quickmod_id: @quickmod.id, id: @version.id, version: { id: @version.id, download_type: new_dl_type }
-
-        assert_response :forbidden
-    end
+    # {{{ Update
 
     test "should update version download type" do
         sign_in @quickmod.owner
@@ -57,6 +58,16 @@ class VersionsControllerTest < ActionController::TestCase
         assert_equal new_dl_type.to_s, vsn.download_type
     end
 
+    test "should not update unowned version download type" do
+        new_dl_type = :direct_dl
+        patch :update, quickmod_id: @quickmod.id, id: @version.id, version: { id: @version.id, download_type: new_dl_type }
+
+        assert_response :forbidden
+    end
+
+    # }}}
+
+    # {{{ Delete
 
     test "should delete version" do
         sign_in @quickmod.owner
@@ -72,4 +83,6 @@ class VersionsControllerTest < ActionController::TestCase
         end
         assert_response :forbidden
     end
+
+    # }}}
 end
