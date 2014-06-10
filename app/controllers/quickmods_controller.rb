@@ -80,7 +80,7 @@ class QuickModsController < ApplicationController
 
 	def require_owned
 		if not @quickmod.owned_by?(current_user)
-			render 'show', status: :forbidden
+			render 'denied', status: :forbidden
 		end
 	end
 
