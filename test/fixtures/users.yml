@@ -3,8 +3,14 @@
 user_one:
     username: Test User One
     email: test@example.com
+    confirmed_at: 2014-01-01 00:00:00.00000
+    # Pass is 'testpass'
+    encrypted_password: $2a$13$9A1dPhY3/qy1SpxoGHaNaOSXgpDFeSkpcyxhY4.q89QnscbQiS6aW
 
 mike_hawk:
     username: Mike Hawk
     email: mikehawk@example.com
+    confirmed_at: 2014-01-01 00:00:00.00000
+    # Pass is 'testpass'
+    encrypted_password: $2a$13$9A1dPhY3/qy1SpxoGHaNaOSXgpDFeSkpcyxhY4.q89QnscbQiS6aW
 

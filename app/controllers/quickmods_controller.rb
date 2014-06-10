@@ -1,5 +1,6 @@
 class QuickModsController < ApplicationController
     before_action :set_quickmod, only: [:edit, :update, :show, :destroy]
+	before_filter :require_owned, only: [:edit, :update, :destroy]
 
     def new
         @quickmod = QuickMod.new
@@ -11,6 +12,7 @@ class QuickModsController < ApplicationController
 
     def create
         @quickmod = QuickMod.new quickmod_params
+		@quickmod.owner = current_user
         @quickmod.save
         respond_to do |format|
             format.json do
@@ -75,6 +77,12 @@ class QuickModsController < ApplicationController
     def set_quickmod
         @quickmod = QuickMod.friendly.find(params[:id])
     end
+
+	def require_owned
+		if not @quickmod.owned_by?(current_user)
+			render 'show', status: :forbidden
+		end
+	end
 
     def quickmod_params
         params.require(:quickmod).permit(:uid, :name, :description, :tags, :categories)

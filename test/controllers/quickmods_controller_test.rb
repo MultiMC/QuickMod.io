@@ -25,6 +25,8 @@ class QuickModsControllerTest < ActionController::TestCase
     test "should update QuickMod name" do
 		sign_in @quickmod.owner
 
+		get :edit, id: @quickmod.slug
+
         new_name = "Name Updated"
         patch :update, id: @quickmod.slug, quickmod: { name: new_name }
 
@@ -33,6 +35,15 @@ class QuickModsControllerTest < ActionController::TestCase
         qm = QuickMod.friendly.find(@quickmod.slug)
         assert_equal new_name, qm.name
     end
+
+	test "should not update unowned QuickMod" do
+        get :show, id: @quickmod.slug
+        assert_response :success
+        new_name = "Name Updated"
+        patch :update, id: @quickmod.slug, quickmod: { name: new_name }
+
+		assert_response :forbidden
+	end
 
     test "should delete QuickMod" do
 		sign_in @quickmod.owner
