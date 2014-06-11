@@ -82,5 +82,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Devise mailer URL options
-  config.action_mailer.default_url_options = { host: 'quickmod.io' }
+  config.action_mailer.default_url_options = { host: ENV['APP_HOST'] }
 end
