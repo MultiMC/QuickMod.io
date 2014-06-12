@@ -1,5 +1,5 @@
 class QuickMod < ActiveRecord::Base
-	belongs_to :owner, class_name: 'User'
+    belongs_to :owner, class_name: 'User'
     has_many :versions
 
     extend FriendlyId
@@ -10,6 +10,38 @@ class QuickMod < ActiveRecord::Base
     validate :uid_reserved?
 
     before_save { |qm| qm.uid = qm.uid.downcase }
+
+    # Gets the QuickMod's tags as a string separated by commas.
+    def tags_tokens
+        if tags.nil?
+            {}
+        else
+            tags.join(', ')
+        end
+    end
+
+    def tags_tokens=(str)
+        self.tags = str.split(',').map do |s|
+            s.strip
+        end
+    end
+
+    # Gets the QuickMod's categories as a string separated by commas.
+    def categories_tokens
+        if categories.nil?
+            {}
+        else
+            categories.join(', ')
+        end
+    end
+
+    def categories_tokens=(str)
+        self.categories = str.split(',').map do |s|
+            s.strip
+        end
+    end
+
+
 
     def force_regen_slug=(val)
         @force_regen_slug = val
@@ -37,8 +69,8 @@ class QuickMod < ActiveRecord::Base
         end
     end
 
-	# True if the given user owns this QuickMod
-	def owned_by?(usr)
-		not usr.nil? and usr.id == owner_id
-	end
+    # True if the given user owns this QuickMod
+    def owned_by?(usr)
+        not usr.nil? and usr.id == owner_id
+    end
 end

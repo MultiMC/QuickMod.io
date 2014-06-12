@@ -86,7 +86,7 @@ class QuickModsController < ApplicationController
 	end
 
     def quickmod_params
-        params.require(:quickmod).permit(:uid, :name, :description, :tags, :categories)
+        params.require(:quickmod).permit(:uid, :name, :description, :tags, :categories, :tags_tokens, :categories_tokens)
     end
 
 end

@@ -16,6 +16,12 @@
             %td Name
             %td= best_in_place_if @quickmod.owned_by?(current_user), @quickmod, :name, type: :input
           %tr
+            %td Tags
+            %td= best_in_place_if @quickmod.owned_by?(current_user), @quickmod, :tags_tokens, type: :input
+          %tr
+            %td Categories
+            %td= best_in_place_if @quickmod.owned_by?(current_user), @quickmod, :categories_tokens, type: :input
+          %tr
             %td Owner
             %td
               - if @quickmod.owner.nil?
