@@ -14,7 +14,7 @@ class QuickMod < ActiveRecord::Base
     # Gets the QuickMod's tags as a string separated by commas.
     def tags_tokens
         if tags.nil?
-            {}
+            ''
         else
             tags.join(', ')
         end
@@ -29,7 +29,7 @@ class QuickMod < ActiveRecord::Base
     # Gets the QuickMod's categories as a string separated by commas.
     def categories_tokens
         if categories.nil?
-            {}
+            ''
         else
             categories.join(', ')
         end
