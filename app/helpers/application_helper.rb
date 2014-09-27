@@ -1,7 +1,7 @@
 module ApplicationHelper
     def nav_entry(*args, &block)
         title = args.shift if block.nil?
-        html_class = if current_page?(*args) then
+        html_class = if current_page?(*args[0]) then
                          'active item'
                      else
                          'item'
