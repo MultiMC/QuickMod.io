@@ -1,8 +1,5 @@
 %h1 QuickMod for #{@quickmod.name}
 
-- if @quickmod.owned_by?(current_user)
-  = link_to "Edit", edit_quickmod_url(@quickmod)
-
 .ui.grid
   .equal.height.row
     .four.wide.column
@@ -14,23 +11,10 @@
             %td= @quickmod.uid
           %tr
             %td Name
-            %td= best_in_place_if @quickmod.owned_by?(current_user), @quickmod, :name, type: :input
-          %tr
-            %td Tags
-            %td= best_in_place_if @quickmod.owned_by?(current_user), @quickmod, :tags_tokens, type: :input
-          %tr
-            %td Categories
-            %td= best_in_place_if @quickmod.owned_by?(current_user), @quickmod, :categories_tokens, type: :input
-          %tr
-            %td Owner
-            %td
-              - if @quickmod.owner.nil?
-                No Owner
-              - else
-                = @quickmod.owner.username
+            %td= best_in_place @quickmod, :name, type: :input
     .twelve.wide.column
       %h2 Description
-      %p= best_in_place_if @quickmod.owned_by?(current_user), @quickmod, :description, type: :textarea
+      %p= best_in_place @quickmod, :description, type: :textarea
 
 %h2 Versions
 %table.ui.basic.table
@@ -38,20 +22,17 @@
     %tr
       %th.fourteen.wide Name
       %th.button-col.three.wide
-        - if @quickmod.owned_by?(current_user)
-          %a.ui.mini.green.icon.button{href: new_quickmod_version_path(@quickmod)}
-            %i.plus.icon.link.icon
+        %a.ui.mini.green.icon.button{href: new_quickmod_version_path(@quickmod)}
+          %i.plus.icon.link.icon
   %tbody
     - @quickmod.versions.each do |version|
       %tr
         %td
           %a{href: url_for([@quickmod, version])}= version.name
         %td.button-col
-          - if @quickmod.owned_by?(current_user)
-            .ui.icon.buttons
-              %a.mini.blue.ui.button{href: edit_quickmod_version_url(@quickmod, version)}
-                %i.edit.icon
-              %a.mini.red.ui.button{href: url_for([@quickmod, version]),
-                data: { method: :delete, confirm: "Are you sure you want to delete version #{version.name}?" } }
-                %i.delete.icon
-
+          .ui.icon.buttons
+            %a.mini.blue.ui.button{href: edit_quickmod_version_url(@quickmod, version)}
+              %i.edit.icon
+            %a.mini.red.ui.button{href: url_for([@quickmod, version]),
+              data: { method: :delete, confirm: "Are you sure you want to delete version #{version.name}?" } }
+              %i.delete.icon

@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -16,8 +14,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'haml', '~>4.0.5'
 # Use Best In Place for inline editing.
 gem 'best_in_place', github: 'bernat/best_in_place'
-# Friendly ID for nicer URLs
-gem 'friendly_id', '~>5.0.0'
 # For Heroku
 gem 'rails_12factor', group: :production
 # Less is more

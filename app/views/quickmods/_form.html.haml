@@ -11,10 +11,6 @@
   .field
     = f.text_field :name, rails: {placeholder: 'Name'}, semantic: {required: true}
   .field
-    = f.text_field :tags_tokens, rails: {placeholder: 'Tags (separated by commas)'}
-  .field
-    = f.text_field :categories_tokens, rails: {placeholder: 'Categories (separated by commas)'}
-  .field
     = f.text_area :description, rails: {placeholder: 'Description'}
   .actions
     = f.submit class: 'ui green button ok'

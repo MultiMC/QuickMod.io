@@ -10,10 +10,8 @@ class QuickModsController < ApplicationController
     def edit
     end
 
-
     def create
         @quickmod = QuickMod.new quickmod_params
-		@quickmod.owner = current_user
         @quickmod.save
         respond_to do |format|
             format.json do
@@ -76,17 +74,14 @@ class QuickModsController < ApplicationController
 
     private
     def set_quickmod
-        @quickmod = QuickMod.friendly.find(params[:id])
+        @quickmod = QuickMod.find_by_uid(params[:id].gsub('_', '.'))
     end
 
 	def require_owned
-		if not @quickmod.owned_by?(current_user)
-			render 'denied', status: :forbidden
-		end
 	end
 
     def quickmod_params
-        params.require(:quickmod).permit(:uid, :name, :description, :tags, :categories, :tags_tokens, :categories_tokens)
+        params.require(:quickmod).permit(:uid, :name, :description)
     end
 
 end

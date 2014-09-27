@@ -3,6 +3,4 @@ class User < ActiveRecord::Base
     # timeoutable and :omniauthable
     devise :database_authenticatable, :registerable, :recoverable, :rememberable,
         :trackable, :validatable, :confirmable, :lockable
-
-    has_many :quickmods
 end

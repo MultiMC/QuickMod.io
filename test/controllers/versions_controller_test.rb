@@ -15,7 +15,7 @@ class VersionsControllerTest < ActionController::TestCase
 		sign_in @quickmod.owner
 
         assert_difference 'Version.count', 1 do
-            post :create, quickmod_id: @quickmod.slug, version: {
+            post :create, quickmod_id: @quickmod.id, version: {
                 name: '9.0.0.1',
             }
         end
@@ -26,7 +26,7 @@ class VersionsControllerTest < ActionController::TestCase
 
     test "should not create version for unowned mod" do
         assert_difference 'Version.count', 0 do
-            post :create, quickmod_id: @quickmod.slug, version: {
+            post :create, quickmod_id: @quickmod.id, version: {
                 name: '9.0.0.1',
             }
         end

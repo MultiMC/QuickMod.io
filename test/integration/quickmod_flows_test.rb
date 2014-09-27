@@ -18,7 +18,7 @@ class QuickModFlowsTest < ActionDispatch::IntegrationTest
         get '/quickmods/new'
         assert_response :success
 
-        created_mod_path = '/quickmods/test-create-quickmod'
+        created_mod_path = '/quickmods/test_create_quickmod.json'
 
         post_via_redirect '/quickmods', quickmod: {
             uid: 'test.create.quickmod',

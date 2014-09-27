@@ -72,13 +72,10 @@ class VersionsController < ApplicationController
 
     private
 	def require_owned
-		if not @quickmod.owned_by?(current_user)
-			render 'denied', status: :forbidden
-		end
 	end
 
     def set_quickmod
-        @quickmod = QuickMod.friendly.find(params[:quickmod_id])
+        @quickmod = QuickMod.find(params[:quickmod_id])
     end
 
     def set_version
